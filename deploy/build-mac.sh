@@ -1,11 +1,11 @@
 #!/bin/bash
 
-QT_VERSION=4.8.0
+QT_VERSION=4.8.1
 QT_FOLDER=Qt-$QT_VERSION
 QT_TARBALL=qt-everywhere-opensource-src-$QT_VERSION.tar.gz
 
 # Tip: change this to local/shared mirror
-QT_URL=http://get.qt.nokia.com/qt/source/$QT_TARBALL
+QT_URL=ftp://ftp.qt-project.org/qt/source/$QT_TARBALL
 
 COMPILE_JOBS=4
 
@@ -36,7 +36,6 @@ mv qt-everywhere-opensource-src-$QT_VERSION Qt-$QT_VERSION
 cd $QT_FOLDER
 patch configure ../allow-static-qtwebkit.patch
 patch -p1 < ../qapplication_skip_qtmenu.patch
-patch -p1 < ../disable_quicktime_video.patch
 patch -p1 < ../qt48_enable_file_input_click.patch
 
 rm -rf src/3rdparty/webkit/Source/WebKit/qt/tests
