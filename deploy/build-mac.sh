@@ -1,11 +1,11 @@
 #!/bin/bash
 
-QT_VERSION=4.8.1
+QT_VERSION=4.8.5
 QT_FOLDER=Qt-$QT_VERSION
 QT_TARBALL=qt-everywhere-opensource-src-$QT_VERSION.tar.gz
 
 # Tip: change this to local/shared mirror
-QT_URL=ftp://ftp.qt-project.org/qt/source/$QT_TARBALL
+QT_URL=http://download.qt-project.org/official_releases/qt/4.8/$QT_VERSION/$QT_TARBALL
 
 COMPILE_JOBS=4
 
@@ -15,7 +15,7 @@ COMPILE_JOBS=4
 if [ ! -f $QT_TARBALL ]
 then
     echo "Downloading Qt $QT_VERSION from Nokia. Please wait..."
-    if ! curl -C - -O -S $QT_URL
+    if ! curl -L -C - -O -S $QT_URL
     then
         echo
         echo "Fatal error: fail to download from $QT_URL !"
